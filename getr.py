@@ -18,13 +18,15 @@ def open_roll(N):
 	if has in maps.keys():
 		cmd='http://10.1.131.11/grade_sheet/index.php?sname='+N+'&sid='+maps[has]+'&msname='+has+'&ms1=95aea4c3483c560373356d1ba3fd73cc'
 		print(N, maps[has], has)
-		cmd2 ='''http://10.1.131.11/grade_sheet/index.php?sid='''+maps[has]+'''&sname='''+N+'''&ms1=95aea4c3483c560373356d1ba3fd73cc&msname='''+has+'''&year_sem=2018-19-2'''
-		webbrowser.open(cmd2)
+		cmd2 ='''"http://10.1.131.11/grade_sheet/index.php?sid='''+maps[has]+'''&sname='''+N+'''&ms1=95aea4c3483c560373356d1ba3fd73cc&msname='''+has+'''&year_sem=2018-19-2"'''
+		# webbrowser.open(cmd2)
+		import os
+		os.system('wget -O '+str(N)+" "+ cmd2)
 	else:
 		print('\n\tEnter Valid Roll\t')
 try:
 	# N=str(input('Enter Roll : '))
-	for N in range(15074001, 15074018):
+	for N in range(15075001, 15075010):
 		open_roll(str(N))
 except pickle.UnpicklingError:
 	content = open('Finals','rb').read()
